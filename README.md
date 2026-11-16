@@ -1,251 +1,186 @@
-# Chikondi Clinic Management System (ChikondiCare)
-
-A web-based clinic management system developed as a group project for
-**Web Programming Assignment 1**. The system is intended to computerise
-the daily operations of ChikondiCare, including staff access, patient
-registration, appointment booking, patient check-in, medical
-consultations, prescriptions, payments, and reporting.
-
-> **Project status:** In development\
-> **Assignment:** Web Programming Assignment 1\
-> **Due date:** 5 December 2026
-
-## Project Overview
-
-ChikondiCare is a community health centre serving more than 2,000
-registered patients. The proposed application will help authorised
-clinic staff manage patient information and clinic activities through a
-centralised web-based system.
-
-Patients do not log in to the application. They interact with clinic
-staff, while staff members access the system according to their assigned
-roles.
-
-## Objectives
-
--   Computerise patient registration and record management.
--   Manage doctors and their availability.
--   Allow receptionists to book and cancel appointments.
--   Support patient check-in and medical consultations.
--   Record diagnoses, consultation notes, and prescriptions.
--   Record patient payments and generate receipts.
--   Provide search, filtering, pagination, and management reports.
--   Protect sensitive patient information through authentication,
-    authorisation, validation, and security controls.
-
-## User Roles
-
-  -----------------------------------------------------------------------
-  Role                                Main responsibilities
-  ----------------------------------- -----------------------------------
-  Administrator                       Manages staff accounts, roles,
-                                      doctors, medicines, consultation
-                                      fees, and audit logs.
-
-  Receptionist                        Views available appointment slots,
-                                      books and cancels appointments, and
-                                      issues confirmations.
-
-  Health Care Attendant               Registers patients, checks patients
-                                      in, and records payments.
-
-  Doctor                              Views own appointments, records
-                                      consultation outcomes and
-                                      prescriptions, and views records of
-                                      patients they have seen.
-  -----------------------------------------------------------------------
-
-## Main System Modules
-
-The application is intended to include the following modules:
-
-1.  **Authentication and access control** -- Staff login and logout,
-    password changes, session management, and role-based permissions.
-2.  **System administration** -- Staff account and role management,
-    doctor management, medicine catalogue management, and consultation
-    fee settings.
-3.  **Patient management** -- Patient registration, unique patient
-    numbers, patient search, and updating patient details.
-4.  **Appointment management** -- Viewing doctor availability, booking
-    appointments, alternative doctor selection, cancellation, and
-    printable confirmations.
-5.  **Patient check-in** -- Retrieving appointments and recording
-    patient check-in.
-6.  **Medical consultation** -- Recording diagnoses, notes,
-    observations, and prescriptions.
-7.  **Payment management** -- Recording payments and generating
-    printable receipts.
-8.  **Search and reporting** -- Searching, filtering, and paginating
-    records, plus generating the required PDF and Excel reports.
-
-## Technology Stack
-
-The assignment specifies the following technologies and constraints:
-
--   **Backend:** PHP using object-oriented programming (OOP)
--   **Database:** MySQL
--   **Database access:** PDO with prepared statements
--   **Version control:** Git and GitHub
--   **Reports:** PDF and Excel generation
-
-The frontend technologies and any additional libraries will be
-documented here as the project implementation is finalised.
-
-## Object-Oriented Design Requirements
-
-The system is expected to demonstrate:
+# ChikondiCare – Clinic Management System
+
+## 1. Project Overview
+
+**ChikondiCare** is a web-based Clinic Management System designed to computerise and simplify the daily operations of ChikondiCare Community Health Centre.
+
+The system aims to improve the management of patient records, appointments, medical consultations, prescriptions and payments by replacing manual processes with a centralised digital platform.
+
+It provides healthcare staff with an organised way of accessing and managing information while ensuring that each staff member can only access functionalities permitted by their assigned role.
+
+The system is developed as part of a Web Programming assignment using PHP and MySQL.
+
+## 2. System User Roles
+
+The system supports four main categories of users:
+
+### 2.1 Administrator
+- Creates and manages staff accounts.
+- Assigns and manages user roles.
+- Registers and manages doctors.
+- Manages the medicine catalogue.
+- Configures consultation fees.
+- Views system audit logs.
+- Generates administrative reports.
+
+### 2.2 Receptionist
+- Searches and retrieves patient records.
+- Views available appointment slots.
+- Books appointments for patients.
+- Cancels existing appointments.
+- Issues appointment confirmations.
+- Views relevant appointment schedules.
+
+### 2.3 Health Care Attendant
+- Registers new patients.
+- Updates patient registration information.
+- Verifies patient appointments.
+- Checks patients in upon arrival.
+- Records patient payments.
+- Generates payment receipts.
+
+### 2.4 Doctor
+- Views personal appointment schedules.
+- Views patients who have checked in.
+- Records consultation diagnoses and observations.
+- Prescribes medicines to patients.
+- Views historical patient prescriptions and medical records.
+- Generates relevant medical reports.
+
+**Note:** Patients do not log in to the system. They interact with healthcare staff directly when registering, booking appointments and receiving healthcare services.
+
+## 3. Main System Features and Modules
+
+The system consists of the following functional modules:
+
+### 3.1 Authentication and Access Control
+- Staff login and logout.
+- Password management.
+- Role-Based Access Control (RBAC).
+- Restricted access to authorised functionalities.
+- Automatic session termination after inactivity.
+
+### 3.2 System Administration
+- Staff account management.
+- Doctor registration and management.
+- Full-time and visiting doctor management.
+- Medicine catalogue management.
+- Consultation fee configuration.
+- Audit log management.
+
+### 3.3 Patient Registration and Management
+- Registration of new patients.
+- Automatic generation of unique patient identification numbers.
+- Recording of personal and contact information.
+- Assignment of primary doctors.
+- Patient search and record updates.
+
+### 3.4 Appointment Management
+- Viewing available appointment slots.
+- Booking appointments with assigned doctors.
+- Booking with alternative available doctors.
+- Managing visiting doctor schedules.
+- Appointment cancellation.
+- Appointment confirmation generation.
 
--   Classes and objects, including `User`, `Doctor`, `FullTimeDoctor`,
-    `VisitingDoctor`, `Patient`, `Appointment`, `Prescription`,
-    `Medicine`, and `Payment`.
--   Inheritance, including full-time and visiting doctors extending an
-    abstract `Doctor` class.
--   Role classes extending `User`.
--   A Singleton database connection.
--   Custom exceptions, such as `ValidationException`,
-    `AuthorizationException`, and `SlotUnavailableException`.
--   Namespaces and autoloading.
+### 3.5 Patient Check-in Management
+- Retrieval of daily appointments.
+- Verification of patient appointments.
+- Recording patient check-in.
+- Updating appointment status.
 
-## Security Requirements
+### 3.6 Medical Consultation Management
+- Viewing checked-in patients.
+- Recording diagnoses and consultation notes.
+- Recording medical observations.
+- Prescribing medicines.
+- Recording dosage, frequency and medication duration.
+- Maintaining prescription history.
 
-Because the application handles sensitive health information, security
-is an important part of the project. The implementation is expected to
-include:
+### 3.7 Payment Management
+- Recording consultation payments.
+- Recording payment amounts and methods.
+- Generating unique payment transaction numbers.
+- Generating printable payment receipts.
+- Retrieving payment records.
 
--   Password hashing.
--   SQL injection prevention using prepared statements.
--   Output escaping to reduce cross-site scripting (XSS) risks.
--   CSRF tokens on state-changing forms.
--   Secure session handling.
--   Temporary lockout after repeated failed login attempts.
--   Input sanitisation and whitelist validation.
--   Secure configuration, with credentials stored in environment
-    configuration or outside the web root and excluded from Git.
--   Audit logging of access to patient records and prescriptions.
+### 3.8 Search, Filtering and Reporting
+- Searching patient records.
+- Searching and filtering appointments.
+- Filtering appointments by date, doctor and status.
+- Searching payment records.
+- Pagination of records.
+- Generating PDF and Excel reports.
 
-## Database
+The system supports payment receipts, prescription records, daily appointment lists, patient lists, revenue summaries and visiting doctor schedules.
 
-The database will be designed and normalised to **Third Normal Form
-(3NF)**. Database scripts and setup instructions will be added to the
-repository as development progresses.
+## 4. Technologies Used
 
-## Reports
+The following technologies are used in developing the application:
 
-The required reports are:
+| Technology | Purpose |
+|---|---|
+| PHP | Server-side programming and application logic |
+| MySQL | Database management and data storage |
+| PDO | Secure database connectivity and prepared statements |
+| HTML | Structuring application pages |
+| CSS | Styling and designing the user interface |
+| JavaScript | Client-side validation and interactive functionality |
 
-  -----------------------------------------------------------------------
-  Report                  Format                  Access
-  ----------------------- ----------------------- -----------------------
-  Payment receipt         PDF                     Health Care Attendant,
-                                                  Administrator
+Additional implementation techniques include Object-Oriented Programming (OOP), Git version control and database normalisation up to Third Normal Form (3NF).
 
-  Patient prescription    PDF                     Doctor, Administrator
-  record                                          
+## 5. Application Design
 
-  Daily appointment list  PDF and Excel           Doctor (own),
-  per doctor                                      Receptionist,
-                                                  Administrator
+The application follows an object-oriented design approach to promote modularity, reusability and maintainability.
 
-  Patient list per doctor Excel                   Administrator, Doctor
-                                                  (own)
+The system is organised around the following design principles:
 
-  Revenue and attendance  PDF with chart or       Administrator
-  summary                 table, and Excel        
+- **Object-Oriented Programming:** Uses classes and objects to represent system entities such as users, doctors, patients, appointments, prescriptions, medicines and payments.
+- **Encapsulation:** Keeps related data and operations within appropriate classes.
+- **Inheritance:** Uses inheritance to represent specialised entities such as full-time and visiting doctors.
+- **Abstraction:** Uses abstract classes where appropriate to define common behaviours.
+- **Database Design:** Uses a relational MySQL database structured and normalised to Third Normal Form (3NF).
+- **Database Connectivity:** Uses PDO with a Singleton database connection approach.
+- **Role-Based Design:** Provides different interfaces, menus and functionalities depending on the authenticated user's role.
+- **Exception Handling:** Uses custom exceptions and try-catch blocks to handle application errors.
 
-  Visiting doctor         PDF                     Administrator,
-  schedule                                        Receptionist
-  -----------------------------------------------------------------------
+The application is designed to provide a consistent, user-friendly interface with clear navigation and role-specific dashboards.
 
-## Getting Started
+## 6. Security and Privacy
 
-The project setup instructions will be completed once the source code
-and database structure are in place.
+Since the system handles sensitive patient and medical information, security and privacy are important considerations throughout its development.
 
-### Prerequisites
+The application incorporates the following security measures:
 
--   A web server with PHP support (for example, Apache).
--   A PHP version compatible with the project's dependencies.
--   MySQL server.
--   Git.
--   A web browser.
+1. **Password Hashing:** Passwords are securely hashed before being stored in the database.
+2. **SQL Injection Prevention:** PDO prepared statements are used to prevent SQL injection attacks.
+3. **Cross-Site Scripting (XSS) Prevention:** User-generated content is escaped before being displayed.
+4. **Cross-Site Request Forgery (CSRF) Protection:** CSRF tokens are implemented on forms that perform state-changing operations.
+5. **Secure Sessions:** Session management is implemented to protect authenticated users.
+6. **Brute-Force Protection:** Temporary account lockout is applied after repeated unsuccessful login attempts.
+7. **Input Validation and Sanitisation:** Both client-side and server-side validation are used to ensure that submitted data meets the required conditions.
+8. **Secure Configuration:** Sensitive configuration details and database credentials are kept outside the public web root or in environment configuration files and excluded from Git.
+9. **Audit Logging:** Important activities, including access to patient records and prescriptions, are logged for accountability.
+10. **Role-Based Access Control:** Access to sensitive information and system functionalities is restricted according to assigned user permissions.
 
-### Setup
+These measures aim to protect patient confidentiality, maintain data integrity and prevent unauthorised access to the system.
 
-1.  Clone the repository:
+---
 
-    ``` bash
-    git clone https://github.com/<your-github-username>/chikondi-clinic.git
-    ```
+## Project Information
 
-2.  Move into the project directory:
+**Project Name:** ChikondiCare Clinic Management System
 
-    ``` bash
-    cd chikondi-clinic
-    ```
+**Project Type:** Web-Based Application
 
-3.  Create a MySQL database for the application.
+**Course:** Web Programming
 
-4.  Import the project's SQL script when it is available.
+**Backend:** PHP
 
-5.  Configure the database connection using the project's environment
-    configuration. Do not commit database passwords or other secrets to
-    Git.
+**Database:** MySQL
 
-6.  Configure the web server's document root according to the project
-    structure.
+**Version Control:** Git and GitHub
 
-7.  Open the application through the local development server.
+**Project Contributors:** Group of Four Students
 
-> Replace or extend these instructions with the exact PHP version,
-> database name, environment variables, and commands used by the
-> finished project.
-
-## Group Members
-
-Add the names and responsibilities of all four group members below.
-
-    No. Full name      Student ID       Module / responsibility
-  ----- -------------- ---------------- -------------------------
-      1 \[Member 1\]   \[Student ID\]   \[Module\]
-      2 \[Member 2\]   \[Student ID\]   \[Module\]
-      3 \[Member 3\]   \[Student ID\]   \[Module\]
-      4 \[Member 4\]   \[Student ID\]   \[Module\]
-
-Each group member is expected to actively participate, implement at
-least one functional module, and be prepared to demonstrate and present
-their contribution.
-
-## Project Deliverables
-
-The assignment requires the group to submit:
-
-1.  Source code through the Git repository.
-2.  An SQL script.
-3.  PDF documentation containing the case-study analysis, use case
-    diagram, ERD, RBAC matrix, security measures, and setup
-    instructions.
-4.  A 5--7 minute demonstration covering the patient journey:
-    registration, appointment booking, check-in, consultation,
-    prescription, payment, and reporting.
-
-## Contribution
-
-Group members should use Git for version control and coordinate their
-work through the shared GitHub repository. Use clear commit messages and
-review changes before merging them into the main branch.
-
-## Assignment Assessment
-
-The project will be assessed on:
-
--   Quality of work.
--   User interface design.
--   Usability.
--   Functional completeness.
--   Presentation and demonstration.
-
-------------------------------------------------------------------------
-
-**Note:** This README describes the assignment requirements and intended
-system scope. Update it as features are implemented so that it
-accurately reflects the final application.
+**Project Status:** Under Development
